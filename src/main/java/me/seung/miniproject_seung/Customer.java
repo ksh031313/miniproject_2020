@@ -19,11 +19,11 @@ public class Customer {
     String custType;
     Integer lineAmt;
 
-    // Integer ssan;
-    // Integer phoneNum;
+    Integer ssan;
+    Integer phoneNum;
 
-    // Integer corpRegistNum;
-    // Integer corpPhoneNum;
-    // String representName;
+    Integer corpRegistNum;
+    Integer corpPhoneNum;
+    String representName;
 
 }
