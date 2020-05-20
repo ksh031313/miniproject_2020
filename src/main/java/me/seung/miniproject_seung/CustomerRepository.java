@@ -11,12 +11,4 @@ public class CustomerRepository {
     @PersistenceContext
     private EntityManager em;
 
-    public Integer save(Customer customer) {
-        em.persist(customer);
-        return customer.getCustId();
-    }
-
-    public Customer find(Integer custId) {
-        return em.find(Customer.class, custId);
-    }
 }
