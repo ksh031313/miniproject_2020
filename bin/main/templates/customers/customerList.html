@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{fragments/main}" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>고객 조회</title>
+</head>
+<body>
+<div layout:fragment="content" class="container">
+
+    <div class="jumbotron">
+        <h2> 고객 조회</h2>
+        <div>
+            <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>고객명</th>
+                <!-- <th>고객구분</th> -->
+                <th>주소</th>
+                <th>회선수량</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="customer : ${customers}">
+                <td th:text="${customer.id}"></td>
+                <td th:text="${customer.name}"></td>
+                <!-- <td th:text="${customer.custType}"></td> -->
+                <td th:text="${customer.address?.city}"></td>
+                <td th:text="${customer.lineAmt}"></td>
+            </tr>
+            </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

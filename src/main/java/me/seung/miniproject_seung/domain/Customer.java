@@ -30,9 +30,10 @@ public abstract class Customer {
     private Address address;
 
     // @Enumerated(EnumType.STRING)
-    // private CustType custType;
+    //private CustType custType;
     private int lineAmt;
 
 	public void setCustId(int i) {
-	}
+    }
+
 }

@@ -3,17 +3,19 @@
         <ul class="nav flex-column">
           <li class="nav-item">
             <a class="nav-link" th:href="@{/}">
-              <span data-feather="file"></span>
+              <span data-feather="home"></span>
               <span>HOME</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link">
-              <span data-feather="home"></span> <span>고객등록</span><span class="sr-only"></span>
+            <a class="nav-link" th:href="@{/customers/new}">
+              <span data-feather="file"></span> 
+              <span>고객등록</span>
+              <span class="sr-only"></span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" th:href="@{/customer/list}">
+            <a class="nav-link" th:href="@{/customers/list}">
               <span data-feather="file"></span>
               <span>고객조회</span>
             </a>
