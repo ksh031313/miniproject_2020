@@ -6,11 +6,11 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@DiscriminatorValue("CORP")
+@DiscriminatorValue("COMPANY")
 @Getter @Setter
-public class Corporation extends Customer{
+public class Company extends Customer{
     
-    private Integer corpRegistNum;
-    private Integer corpPhoneNum;
+    private Integer compRegistNum;
+    private Integer compPhoneNum;
     private String representName;
 }
