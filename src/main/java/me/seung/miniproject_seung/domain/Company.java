@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@DiscriminatorValue("COMPANY")
+//@DiscriminatorValue("COMPANY")
 @Getter @Setter
 public class Company extends Customer{
     

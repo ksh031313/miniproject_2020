@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.stereotype.Controller;
 import lombok.RequiredArgsConstructor;
 import me.seung.miniproject_seung.domain.Address;
+import me.seung.miniproject_seung.domain.Company;
 import me.seung.miniproject_seung.domain.Customer;
 import me.seung.miniproject_seung.domain.Person;
 import lombok.RequiredArgsConstructor;
@@ -37,12 +38,35 @@ public class CustomerController {
         }
 
         Address address = new Address(form.getCity(), form.getStreet(), form.getZipcode());
-        
-        Customer customer = new Person();
-        customer.setName(form.getName());
-        customer.setAddress(address);
 
-        customerService.join(customer);
+        if ("PERSON".equals(form.getCustType())) {
+            Person customer = new Person();
+            customer.setName(form.getName());
+            customer.setCustType(form.getCustType());
+            customer.setLineAmt(form.getLineAmt());
+    
+            customer.setAddress(address);
+
+            customer.setSsan(form.getSsan());
+            customer.setPhoneNum(form.getPhoneNum());
+            
+            customerService.join(customer);
+
+        } else if ("COMPANY".equals(form.getCustType())) {
+            Company customer  = new Company();
+            customer.setName(form.getName());
+            customer.setCustType(form.getCustType());
+            customer.setLineAmt(form.getLineAmt());
+
+            customer.setAddress(address);
+            
+            customer.setCompRegistNum(form.getCompRegistNum());
+            customer.setRepresentName(form.getRepresentName());
+            customer.setCompPhoneNum(form.getCompPhoneNum());
+
+            customerService.join(customer);
+
+        }
         
         return "redirect:/customers/list";
     }

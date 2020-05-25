@@ -16,7 +16,7 @@ import lombok.Setter;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "custType")
+//@DiscriminatorColumn(name = "custType")
 @Getter @Setter
 public abstract class Customer {
     
@@ -31,6 +31,7 @@ public abstract class Customer {
 
     // @Enumerated(EnumType.STRING)
     //private CustType custType;
+    private String custType;
     private int lineAmt;
 
 	public void setCustId(int i) {
