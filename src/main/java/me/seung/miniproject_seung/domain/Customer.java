@@ -4,8 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
-// import javax.persistence.EnumType;
-// import javax.persistence.Enumerated;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
@@ -29,9 +29,9 @@ public abstract class Customer {
     @Embedded
     private Address address;
 
-    // @Enumerated(EnumType.STRING)
-    //private CustType custType;
-    private String custType;
+    @Enumerated(EnumType.STRING)
+    private CustType custType;
+
     private int lineAmt;
 
 	public void setCustId(int i) {

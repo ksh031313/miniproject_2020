@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 //import lombok.RequiredArgsConstructor;
 import me.seung.miniproject_seung.domain.Customer;
 import me.seung.miniproject_seung.repository.CustomerRepository;
+import me.seung.miniproject_seung.repository.CustomerSearch;
 
 @Service
 @Transactional(readOnly = true)
@@ -44,6 +45,10 @@ public class CustomerService {
 
     public Customer findOne(Long customerId) {
         return customerRepository.findOne(customerId);
+    }
+
+    public List<Customer> findCustomersByCondition(CustomerSearch customerSearch) {
+        return customerRepository.findAllByCriteria(customerSearch);
     }
  
 }

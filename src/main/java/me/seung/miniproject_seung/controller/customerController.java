@@ -1,21 +1,23 @@
 package me.seung.miniproject_seung.controller;
 
 import java.util.List;
-
 import javax.validation.Valid;
+
+import me.seung.miniproject_seung.domain.Address;
+import me.seung.miniproject_seung.domain.Company;
+import me.seung.miniproject_seung.domain.CustType;
+import me.seung.miniproject_seung.domain.Customer;
+import me.seung.miniproject_seung.domain.Person;
+import me.seung.miniproject_seung.repository.CustomerSearch;
+import me.seung.miniproject_seung.service.CustomerService;
 
 import org.springframework.stereotype.Controller;
 import lombok.RequiredArgsConstructor;
-import me.seung.miniproject_seung.domain.Address;
-import me.seung.miniproject_seung.domain.Company;
-import me.seung.miniproject_seung.domain.Customer;
-import me.seung.miniproject_seung.domain.Person;
-import lombok.RequiredArgsConstructor;
-import me.seung.miniproject_seung.service.CustomerService;
 
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 
@@ -27,7 +29,9 @@ public class CustomerController {
     
     @GetMapping("/customers/new")
     public String createForm(Model model) {
-        model.addAttribute("customerForm", new CustomerForm());
+        CustomerForm customerForm = new CustomerForm();
+        customerForm.setCustType("PERSON");
+        model.addAttribute("customerForm", customerForm);
         return "customers/createCustomerForm";
     }
 
@@ -42,7 +46,7 @@ public class CustomerController {
         if ("PERSON".equals(form.getCustType())) {
             Person customer = new Person();
             customer.setName(form.getName());
-            customer.setCustType(form.getCustType());
+            customer.setCustType(CustType.PERSON);
             customer.setLineAmt(form.getLineAmt());
     
             customer.setAddress(address);
@@ -55,7 +59,7 @@ public class CustomerController {
         } else if ("COMPANY".equals(form.getCustType())) {
             Company customer  = new Company();
             customer.setName(form.getName());
-            customer.setCustType(form.getCustType());
+            customer.setCustType(CustType.COMPANY);
             customer.setLineAmt(form.getLineAmt());
 
             customer.setAddress(address);
@@ -72,8 +76,9 @@ public class CustomerController {
     }
     
     @GetMapping("/customers/list")
-    public String list(Model model) {
-        List<Customer> customers = customerService.findCustomers();
+    public String customerList(@ModelAttribute("customerSearch") CustomerSearch customerSearch, Model model) {
+        //List<Customer> customers = customerService.findCustomers();
+        List<Customer> customers = customerService.findCustomersByCondition(customerSearch);
         model.addAttribute("customers", customers);
 
         return "customers/customerList";

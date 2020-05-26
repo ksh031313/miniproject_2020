@@ -9,6 +9,21 @@
     <div class="jumbotron">
         <h2> 고객 조회</h2>
         <div>
+            <form th:object="${customerSearch}" class="form-inline">
+                <div class="form-group mb-2">
+                    <input type="text" th:field="*{customerName}" class="formcontrol" placeholder="고객명"/>
+                </div>
+                <div class="form-group mx-sm-1 mb-2">
+                    <select th:field="*{custType}" class="form-control">
+                    <option value="">고객유형</option>
+                    <option th:each="type : ${T(me.seung.miniproject_seung.domain.CustType).values()}"
+                        th:value="${type}" th:text="${type}">option </option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary mb-2">검색</button>
+            </form>
+            </div>
+        <div>
             <table class="table table-striped">
             <thead>
             <tr>
